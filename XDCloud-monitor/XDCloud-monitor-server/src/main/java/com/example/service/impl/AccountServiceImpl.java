@@ -91,6 +91,18 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     }
 
     /**
+     * 通过邮件发送服务器预警或者异常信息,并将发送请求提交到消息队列等待发送
+     * @param type 类型 预警or异常
+     * @param email 邮件地址
+     * @param content 内容
+     */
+    @Override
+    public void clientWarning(String type, String email, String content) {
+        Map<String, Object> data = Map.of("type",type,"email", email,"content",content);
+        rabbitTemplate.convertAndSend(Const.MQ_MAIL, data);
+    }
+
+    /**
      * 邮件验证码重置密码操作，需要检查验证码是否正确
      * @param info 重置基本信息
      * @return 操作结果，null表示正常，否则为错误原因
@@ -215,6 +227,17 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         return this.query()
                 .eq("username", text).or()
                 .eq("email", text)
+                .one();
+    }
+
+    /**
+     *通过id查找用户
+     * @param id  accountId
+     * @return 账户实体
+     */
+    public Account findAccountById(int id){
+        return this.query()
+                .eq("id", id)
                 .one();
     }
 }

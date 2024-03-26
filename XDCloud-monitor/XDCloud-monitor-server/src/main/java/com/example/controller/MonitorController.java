@@ -100,7 +100,20 @@ public class MonitorController {
                                                        @RequestAttribute(Const.ATTR_USER_ID) int userId,
                                                        @RequestAttribute(Const.ATTR_USER_ROLE) String userRole) {
         if(this.permissionCheck(userId, userRole, clientId)) {
-            return RestBean.success(service.clientRuntimeDetailsNow(clientId));
+            RuntimeDetailVO runtimeDetailVO=service.clientRuntimeDetailsNow(clientId);
+            //TODO 把现在简单的预警换成像阿里云那种复杂一点的
+            Account user= accountService.findAccountById(userId);
+            String email =user.getEmail();
+            if(runtimeDetailVO.getMemoryUsage()>=0.9&&runtimeDetailVO.getCpuUsage()>=0.9){
+                accountService.clientWarning("警告",email,"CPU和内存使用率过高,请及时上线检查,后果自负");
+            } else if (runtimeDetailVO.getCpuUsage()>=0.95){
+                accountService.clientWarning("预警",email,"CPU使用率过高,请及时上线检查,后果自负");
+            }else if(runtimeDetailVO.getMemoryUsage()>=0.95){
+                accountService.clientWarning("预警",email,"内存使用率过高,请及时上线检查,后果自负");
+            }else if(runtimeDetailVO.getDiskUsage()>=0.95){
+                accountService.clientWarning("预警",email,"磁盘使用率过高,请及时上线检查,后果自负");
+            }
+            return RestBean.success(runtimeDetailVO);
         } else {
             return RestBean.noPermission();
         }
