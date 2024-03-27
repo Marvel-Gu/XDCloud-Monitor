@@ -1,34 +1,26 @@
 # 开发环境配置
-server:
-  port: 80
 springdoc:
-  api-docs:
-    enabled: false
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  paths-to-match: /api/**
+  swagger-ui:
+    operations-sorter: alpha
 spring:
-  data:
-    redis:
-      host:
-      port:
   influx:
-    url:
-    user:
-    password:
+    url: http://localhost:8086
+    user: admin
+    password: 12345678
   mail:
     host: smtp.163.com
-    username:
-    password:
+    username: m13375159019@163.com
+    password: Bristol_030223
   rabbitmq:
-    addresses:
-    username:
-    password:
+    addresses: localhost  #host: 127.0.0.1 #ip  #    port: 15672      #端口
+    username: guest
+    password: guest
     virtual-host: /
   datasource:
-    url:
-    username:
-    password:
+    url: jdbc:mysql://localhost:3306/monitor
+    username: root
+    password: yuzhe_780206
     driver-class-name: com.mysql.cj.jdbc.Driver
   security:
     jwt:
@@ -45,8 +37,8 @@ spring:
       mail-limit: 60
     flow:
       period: 5
-      limit: 1000
-      block: 30
+      limit: 10000
+      block: 0
     cors:
       origin: '*'
       credentials: false

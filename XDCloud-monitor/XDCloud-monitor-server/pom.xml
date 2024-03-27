@@ -109,11 +109,11 @@
             <artifactId>jsch</artifactId>
             <version>0.1.55</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.hierynomus</groupId>-->
-<!--            <artifactId>sshj</artifactId>-->
-<!--            <version>0.38.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.hierynomus</groupId>
+            <artifactId>sshj</artifactId>
+            <version>0.38.0</version>
+        </dependency>
     </dependencies>
 
     <profiles>
