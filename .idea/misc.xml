@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
@@ -9,6 +10,8 @@
         <option value="$PROJECT_DIR$/XDCloud-monitor-jwt/itbaima-monitor-server/pom.xml" />
         <option value="$PROJECT_DIR$/XDCloud-monitor-jwt/XDCloud-monitor-client/pom.xml" />
         <option value="$PROJECT_DIR$/XDCloud-monitor-jwt/XDCloud-monitor-server/pom.xml" />
+        <option value="$PROJECT_DIR$/XDCloud-monitor/XDCloud-monitor-server/pom.xml" />
+        <option value="$PROJECT_DIR$/XDCloud-monitor/XDCloud-monitor-client/pom.xml" />
       </list>
     </option>
   </component>
