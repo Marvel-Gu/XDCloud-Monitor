@@ -64,13 +64,6 @@ public class NetUtils {
 
     public void updateRuntimeDetails(RuntimeDetail detail) {
         Response response = this.doPost("/runtime", detail);
-//        if(detail.getCpuUsage()>0.3){
-//            log.warn("cpu使用率过高，请检查系统性能");
-//        }else if(detail.getMemoryUsage()>0.3){
-//            log.warn("内存使用率过高，请检查系统性能");
-//        }else if(detail.getDiskUsage()>0.3){
-//            log.warn("磁盘使用率过高，请检查系统性能");
-//        }
         if(!response.success()) {
             log.warn("更新运行时状态时，接收到服务端的异常响应内容: {}", response.message());
         }

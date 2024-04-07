@@ -98,8 +98,8 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
      */
     @Override
     public void clientWarning(String type, String email, String content) {
-        Map<String, Object> data = Map.of("type",type,"email", email,"content",content);
-        rabbitTemplate.convertAndSend(Const.MQ_MAIL, data);
+            Map<String, Object> data = Map.of("type", type, "email", email, "content", content);
+            rabbitTemplate.convertAndSend(Const.MQ_MAIL, data);
     }
 
     /**
