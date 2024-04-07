@@ -16,6 +16,8 @@ public class RuntimeData {
     @Column
     double cpuUsage;
     @Column
+    double cpuTemperature;
+    @Column
     double memoryUsage;
     @Column
     double diskUsage;

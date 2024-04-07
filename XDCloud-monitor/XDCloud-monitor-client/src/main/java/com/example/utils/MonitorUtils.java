@@ -5,10 +5,7 @@ import com.example.entity.RuntimeDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.HWDiskStore;
-import oshi.hardware.HardwareAbstractionLayer;
-import oshi.hardware.NetworkIF;
+import oshi.hardware.*;
 import oshi.software.os.OperatingSystem;
 
 import java.io.File;
@@ -54,6 +51,7 @@ public class MonitorUtils {
             double read = hardware.getDiskStores().stream().mapToLong(HWDiskStore::getReadBytes).sum();
             double write = hardware.getDiskStores().stream().mapToLong(HWDiskStore::getWriteBytes).sum();
             long[] ticks = processor.getSystemCpuLoadTicks();//获取cpu使用数据
+            double cpuTemperature = hardware.getSensors().getCpuTemperature();
             Thread.sleep((long) (statisticTime * 1000));
             networkInterface = Objects.requireNonNull(this.findNetworkInterface(hardware));
             upload = (networkInterface.getBytesSent() - upload) / statisticTime;
@@ -65,6 +63,7 @@ public class MonitorUtils {
                     .mapToLong(file -> file.getTotalSpace() - file.getFreeSpace()).sum() / 1024.0 / 1024 / 1024;
             return new RuntimeDetail()
                     .setCpuUsage(this.calculateCpuUsage(processor, ticks))
+                    .setCpuTemperature(cpuTemperature)
                     .setMemoryUsage(memory)
                     .setDiskUsage(disk)
                     .setNetworkUpload(upload / 1024)

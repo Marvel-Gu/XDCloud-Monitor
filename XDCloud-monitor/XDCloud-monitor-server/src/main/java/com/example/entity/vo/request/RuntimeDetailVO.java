@@ -16,6 +16,8 @@ public class RuntimeDetailVO {
     @NotNull
     double cpuUsage;
     @NotNull
+    double cpuTemperature;
+    @NotNull
     double memoryUsage;
     @NotNull
     double diskUsage;

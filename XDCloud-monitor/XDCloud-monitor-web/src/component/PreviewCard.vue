@@ -45,9 +45,11 @@ const props = defineProps({
       <span style="margin-right: 10px">{{` ${data.cpuCore} CPU`}}</span>
       <i class="fa-solid fa-memory"></i>
       <span>{{` ${data.memory.toFixed(1)} GB`}}</span>
+
     </div>
     <div class="progress">
       <span>{{`CPU: ${(data.cpuUsage * 100).toFixed(1)}%`}}</span>
+      <span>{{` ${data.cpuTemperature} °C`}}</span>
       <el-progress :status="percentageToStatus(data.cpuUsage * 100)"
                    :percentage="data.cpuUsage * 100" :stroke-width="5" :show-text="false"/>
     </div>

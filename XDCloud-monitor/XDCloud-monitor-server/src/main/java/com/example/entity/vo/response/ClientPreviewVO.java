@@ -17,6 +17,7 @@ public class ClientPreviewVO {
     int cpuCore;
     double memory;
     double cpuUsage;
+    double cpuTemperature;
     double memoryUsage;
     double networkUpload;
     double networkDownload;

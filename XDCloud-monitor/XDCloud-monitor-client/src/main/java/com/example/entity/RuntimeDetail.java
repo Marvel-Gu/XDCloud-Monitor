@@ -10,6 +10,8 @@ public class RuntimeDetail {
     long timestamp;
     //CPU使用率
     double cpuUsage;
+    //CPU温度
+    double cpuTemperature;
     //内存使用率
     double memoryUsage;
     //磁盘使用率
