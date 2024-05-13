@@ -106,12 +106,14 @@ public class MonitorController {
             String email =user.getEmail();
             if(runtimeDetailVO.getMemoryUsage()>=0.9&&runtimeDetailVO.getCpuUsage()>=0.9){
                 accountService.clientWarning("警告",email,"CPU和内存使用率过高,请及时上线检查,后果自负");
-            } else if (runtimeDetailVO.getCpuUsage()>=0.95){
+            }else if (runtimeDetailVO.getCpuUsage()>=0.95){
                 accountService.clientWarning("预警",email,"CPU使用率过高,请及时上线检查,后果自负");
             }else if(runtimeDetailVO.getMemoryUsage()>=0.95){
                 accountService.clientWarning("预警",email,"内存使用率过高,请及时上线检查,后果自负");
             }else if(runtimeDetailVO.getDiskUsage()>=0.95){
                 accountService.clientWarning("预警",email,"磁盘使用率过高,请及时上线检查,后果自负");
+            }else if(runtimeDetailVO.getCpuTemperature()>=75.0){
+                accountService.clientWarning("警告",email,"CPU温度过高,请及时上线检查,后果自负");
             }
             return RestBean.success(runtimeDetailVO);
         } else {
