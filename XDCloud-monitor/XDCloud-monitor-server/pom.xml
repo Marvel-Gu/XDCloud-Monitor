@@ -114,6 +114,11 @@
             <artifactId>sshj</artifactId>
             <version>0.38.0</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.13.0</version>
+        </dependency>
     </dependencies>
 
     <profiles>

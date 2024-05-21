@@ -23,4 +23,12 @@ public class ValidationController {
         log.warn("Resolved [{}: {}]", exception.getClass().getName(), exception.getMessage());
         return RestBean.failure(400, "请求参数有误");
     }
+
+    //新增一个自定义的异常处理
+    @ExceptionHandler(SftpException.class)
+    public RestBean<Void> sftpError(SftpException exception) {
+        log.warn("Resolved [{}: {}]", exception.getClass().getName(), exception.getMessage());
+        return RestBean.failure(exception.getCode(), exception.getMessage());
+    }
 }
+
