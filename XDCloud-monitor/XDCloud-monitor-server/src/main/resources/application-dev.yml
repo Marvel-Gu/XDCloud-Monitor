@@ -10,8 +10,8 @@ spring:
     password: 12345678
   mail:
     host: smtp.163.com
-    username: m13375159019@163.com
-    password: Bristol_030223
+    username:
+    password:
   rabbitmq:
     addresses: localhost  #host: 127.0.0.1 #ip  #    port: 15672      #端口
     username: guest
@@ -20,7 +20,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/monitor
     username: root
-    password: yuzhe_780206
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
   security:
     jwt:
